@@ -1,0 +1,62 @@
+[
+  {
+    "id": "payment_debited_not_credited",
+    "label": "Debited but payment failed",
+    "defaultPriority": "high",
+    "description": "Payer's bank or UPI app debited the amount but the gateway transaction failed or stayed pending, so the merchant never received a success callback."
+  },
+  {
+    "id": "refund_not_received",
+    "label": "Refund not received",
+    "defaultPriority": "high",
+    "description": "Refund was initiated on the gateway and an ARN/UTR exists, but the payer says the money never reached the source account, card or wallet."
+  },
+  {
+    "id": "duplicate_payment",
+    "label": "Duplicate or double payment",
+    "defaultPriority": "high",
+    "description": "The same fee, bill or recharge was paid twice — usually a retried checkout, a double tap on a payment link, or a late authorisation after a retry."
+  },
+  {
+    "id": "chargeback",
+    "label": "Chargeback and pre-arbitration",
+    "defaultPriority": "critical",
+    "description": "The issuing bank has raised a chargeback, retrieval request or pre-arbitration against a captured payment and evidence is due before the network deadline."
+  },
+  {
+    "id": "autopay_mandate",
+    "label": "Subscription, e-mandate and UPI AutoPay",
+    "defaultPriority": "medium",
+    "description": "Recurring debit disputes: mandate not cancelled, pre-debit notification missing, wrong amount charged, or a mandate debited after the plan ended."
+  },
+  {
+    "id": "recharge_utility_failure",
+    "label": "Recharge or bill payment not fulfilled",
+    "defaultPriority": "high",
+    "description": "Payment succeeded on the gateway but the mobile recharge, DTH top-up, FASTag or utility bill was not applied by the operator or biller."
+  },
+  {
+    "id": "settlement_hold",
+    "label": "Settlement delay or hold",
+    "defaultPriority": "high",
+    "description": "Merchant settlement is delayed, short, or held by risk/KYC review, reserve, or a negative-balance recovery on the merchant account."
+  },
+  {
+    "id": "fees_mdr_dispute",
+    "label": "Fees, MDR and TDR dispute",
+    "defaultPriority": "low",
+    "description": "Merchant disputes the platform fee, MDR/TDR slab applied, GST on fees, or a fee charged on a refunded or failed transaction."
+  },
+  {
+    "id": "fraud_unauthorised",
+    "label": "Unauthorised or fraudulent payment",
+    "defaultPriority": "critical",
+    "description": "Payment made without the account holder's consent: stolen card, account takeover, OTP phishing, or a payer-side social engineering pattern."
+  },
+  {
+    "id": "service_quality",
+    "label": "Support and service quality",
+    "defaultPriority": "low",
+    "description": "Complaints about checkout downtime, delayed dispute handling or support experience with no direct loss of funds established yet."
+  }
+]

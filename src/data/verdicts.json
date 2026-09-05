@@ -1,0 +1,38 @@
+[
+  {
+    "id": "refund_full",
+    "label": "Full refund",
+    "tone": "approve",
+    "description": "Resolve entirely in the customer's favour and return the full disputed amount."
+  },
+  {
+    "id": "refund_partial",
+    "label": "Partial refund",
+    "tone": "approve",
+    "description": "Return part of the disputed amount, typically where fault is shared or goods were partly usable."
+  },
+  {
+    "id": "replace_or_credit",
+    "label": "Replacement or store credit",
+    "tone": "neutral",
+    "description": "Make the customer whole without a cash refund, via replacement shipment or account credit."
+  },
+  {
+    "id": "request_evidence",
+    "label": "Request more evidence",
+    "tone": "neutral",
+    "description": "The claim is plausible but unproven. Ask the customer for a specific missing artefact before deciding."
+  },
+  {
+    "id": "reject",
+    "label": "Reject claim",
+    "tone": "reject",
+    "description": "Evidence or policy does not support the dispute. Decline and explain why."
+  },
+  {
+    "id": "escalate_human",
+    "label": "Escalate to human review",
+    "tone": "escalate",
+    "description": "Confidence is low, policies conflict, or the case carries legal, fraud or regulatory risk."
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "POL-001",
+    "title": "Failed-but-debited auto-reversal window",
+    "category": "payment_debited_not_credited",
+    "severity": "standard",
+    "rule": "When the gateway shows the payment as failed and no capture exists, the debit auto-reverses to the source account within 5–7 working days. Inside that window, confirm the reversal is pending with the payer and do not issue a second refund from the merchant balance."
+  },
+  {
+    "id": "POL-002",
+    "title": "Debited, authorised but not captured",
+    "category": "payment_debited_not_credited",
+    "severity": "standard",
+    "rule": "If the bank record shows a successful debit with an RRN/UTR and the gateway shows authorised-but-uncaptured beyond the auto-refund window, refund the payer in full from the merchant balance and reconcile against the bank file."
+  },
+  {
+    "id": "POL-003",
+    "title": "Late authorisation after the payer retried",
+    "category": "duplicate_payment",
+    "severity": "standard",
+    "rule": "Two captured payments for the same order or bill reference within 60 minutes are treated as a retry duplicate. Refund the later capture in full without asking the payer for further evidence."
+  },
+  {
+    "id": "POL-004",
+    "title": "Two payments, two distinct references",
+    "category": "duplicate_payment",
+    "severity": "standard",
+    "rule": "If the two payments carry different order or bill references, they are separate obligations. Request the biller receipt before refunding, and refund only the reference the biller confirms as unapplied."
+  },
+  {
+    "id": "POL-005",
+    "title": "Refund with a valid ARN or UTR",
+    "category": "refund_not_received",
+    "severity": "standard",
+    "rule": "Where a refund is processed and an ARN/UTR exists, the funds are with the issuing bank. Share the ARN, tell the payer the credit lands within 5–7 working days from processing, and only re-process after the issuer confirms the reference is unusable."
+  },
+  {
+    "id": "POL-006",
+    "title": "Refund older than the issuer window",
+    "category": "refund_not_received",
+    "severity": "standard",
+    "rule": "If the refund was processed more than 10 working days ago and the payer's bank statement shows no credit against the ARN, raise an issuer trace and make the payer whole from the merchant balance if the trace fails."
+  },
+  {
+    "id": "POL-007",
+    "title": "Recharge or bill not applied by the operator",
+    "category": "recharge_utility_failure",
+    "severity": "standard",
+    "rule": "When the gateway capture succeeded but the operator or biller returned failure or no confirmation for the top-up, refund the payer in full. Never ask the payer to chase the operator themselves."
+  },
+  {
+    "id": "POL-008",
+    "title": "Operator confirmed fulfilment",
+    "category": "recharge_utility_failure",
+    "severity": "standard",
+    "rule": "If the operator log confirms the recharge or bill posted to the correct consumer number, reject the refund and send the payer the operator reference. A wrong consumer number entered by the payer is not a gateway failure."
+  },
+  {
+    "id": "POL-009",
+    "title": "Mandate cancellation on record",
+    "category": "autopay_mandate",
+    "severity": "standard",
+    "rule": "If a mandate revocation or subscription cancellation predates the debit, refund the debit in full and confirm the mandate is revoked at the bank or UPI app so no further debit occurs."
+  },
+  {
+    "id": "POL-010",
+    "title": "Missing pre-debit notification",
+    "category": "autopay_mandate",
+    "severity": "standard",
+    "rule": "A recurring debit taken without the mandatory pre-debit notification at least 24 hours in advance must be refunded in full, regardless of whether the service was used."
+  },
+  {
+    "id": "POL-011",
+    "title": "Debit within the mandate's agreed amount",
+    "category": "autopay_mandate",
+    "severity": "standard",
+    "rule": "Where the debit is within the registered maximum amount, the notification was sent and no cancellation exists, offer account credit rather than a cash refund and revoke the mandate going forward."
+  },
+  {
+    "id": "POL-012",
+    "title": "Chargeback already raised by the issuer",
+    "category": "chargeback",
+    "severity": "blocking",
+    "rule": "Once the issuing bank has raised a chargeback, retrieval request or pre-arbitration, escalate to human review and never refund in parallel — a parallel refund creates a double credit that cannot be recovered."
+  },
+  {
+    "id": "POL-013",
+    "title": "Compelling evidence pack before the network deadline",
+    "category": "chargeback",
+    "severity": "standard",
+    "rule": "Contest a chargeback only when the merchant supplies delivery or fulfilment proof, the checkout IP/device trail and the signed authorisation. Without a complete pack before the deadline, accept the liability and inform the merchant."
+  },
+  {
+    "id": "POL-014",
+    "title": "Unauthorised payment and account takeover",
+    "category": "fraud_unauthorised",
+    "severity": "blocking",
+    "rule": "Any signal of stolen instrument, account takeover, OTP phishing or mismatched device and geography must be escalated to human review, reported to the risk team, and never auto-refunded."
+  },
+  {
+    "id": "POL-015",
+    "title": "Repeat dispute pattern on one payer",
+    "category": "fraud_unauthorised",
+    "severity": "blocking",
+    "rule": "A payer at or above the repeat dispute limit must be escalated to human review whatever the merits of the individual claim, so the pattern can be assessed as a whole."
+  },
+  {
+    "id": "POL-016",
+    "title": "Risk or KYC hold on settlement",
+    "category": "settlement_hold",
+    "severity": "blocking",
+    "rule": "Settlements held for KYC re-verification, a sudden volume spike or a high dispute ratio may only be released by human review after the risk checks clear. Do not promise a release date."
+  },
+  {
+    "id": "POL-017",
+    "title": "Operational settlement delay",
+    "category": "settlement_hold",
+    "severity": "standard",
+    "rule": "Where a settlement is late purely because of a bank holiday, cut-off miss or reconciliation break — and no risk flag exists — confirm the corrected settlement date and waive nothing further."
+  },
+  {
+    "id": "POL-018",
+    "title": "Fees on failed or refunded payments",
+    "category": "fees_mdr_dispute",
+    "severity": "standard",
+    "rule": "Platform fees are not charged on failed payments and are reversed on a full refund. If the fee ledger shows a fee retained against a failed or fully refunded payment, credit the fee and the GST on it back to the merchant."
+  },
+  {
+    "id": "POL-019",
+    "title": "Fee slab applied as agreed",
+    "category": "fees_mdr_dispute",
+    "severity": "standard",
+    "rule": "If the applied MDR matches the merchant's agreed pricing for that instrument — international cards, EMI, corporate cards and wallets carry higher slabs — reject the fee claim and share the fee breakup with the GST split."
+  },
+  {
+    "id": "POL-020",
+    "title": "Goodwill for downtime and slow handling",
+    "category": "service_quality",
+    "severity": "standard",
+    "rule": "Checkout downtime or slow dispute handling without a proven loss of funds is answered with an apology, a root-cause note and fee credit where an SLA was breached — not a transaction refund."
+  },
+  {
+    "id": "POL-021",
+    "title": "Loyalty and standing consideration",
+    "category": "service_quality",
+    "severity": "standard",
+    "rule": "Payers and merchants on the gold or platinum tier with no prior disputes receive the more generous of two otherwise defensible outcomes."
+  }
+]

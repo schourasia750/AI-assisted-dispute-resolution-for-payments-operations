@@ -1,0 +1,275 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ResolveFlow design system — "operations console".
+ *
+ * A single dark, high-contrast ink surface with signal colours reserved for
+ * decision outcomes: teal = resolve in favour, amber = escalate, rose = reject.
+ * Every colour lives here as an oklch token. Components never hardcode colour.
+ */
+
+@theme inline {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-panel: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 18px 40px -24px oklch(0 0 0 / 70%);
+  --shadow-glow: 0 0 0 1px oklch(0.78 0.14 172 / 30%), 0 12px 40px -12px oklch(0.78 0.14 172 / 25%);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.165 0.016 250);
+  --foreground: oklch(0.955 0.006 250);
+  --surface: oklch(0.205 0.018 250);
+  --surface-raised: oklch(0.245 0.02 250);
+
+  --card: oklch(0.205 0.018 250);
+  --card-foreground: oklch(0.955 0.006 250);
+  --popover: oklch(0.225 0.019 250);
+  --popover-foreground: oklch(0.955 0.006 250);
+
+  --primary: oklch(0.79 0.135 172);
+  --primary-foreground: oklch(0.18 0.03 172);
+  --secondary: oklch(0.27 0.02 250);
+  --secondary-foreground: oklch(0.94 0.006 250);
+  --muted: oklch(0.255 0.017 250);
+  --muted-foreground: oklch(0.69 0.018 250);
+  --accent: oklch(0.29 0.024 250);
+  --accent-foreground: oklch(0.955 0.006 250);
+
+  --destructive: oklch(0.63 0.2 18);
+  --destructive-foreground: oklch(0.98 0.005 18);
+  --success: oklch(0.76 0.14 168);
+  --success-foreground: oklch(0.18 0.03 168);
+  --warning: oklch(0.81 0.145 80);
+  --warning-foreground: oklch(0.22 0.04 80);
+  --info: oklch(0.72 0.11 240);
+  --info-foreground: oklch(0.18 0.03 240);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 13%);
+  --ring: oklch(0.79 0.135 172 / 55%);
+
+  --chart-1: oklch(0.79 0.135 172);
+  --chart-2: oklch(0.81 0.145 80);
+  --chart-3: oklch(0.63 0.2 18);
+  --chart-4: oklch(0.72 0.11 240);
+  --chart-5: oklch(0.69 0.018 250);
+
+  --sidebar: oklch(0.185 0.017 250);
+  --sidebar-foreground: oklch(0.955 0.006 250);
+  --sidebar-primary: oklch(0.79 0.135 172);
+  --sidebar-primary-foreground: oklch(0.18 0.03 172);
+  --sidebar-accent: oklch(0.255 0.017 250);
+  --sidebar-accent-foreground: oklch(0.955 0.006 250);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-ring: oklch(0.79 0.135 172 / 55%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+}
+
+/* --- Design-system utilities ------------------------------------------- */
+
+@utility panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility panel-flat {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@utility panel-inset {
+  background-color: color-mix(in oklab, var(--background) 60%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility metric {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+@utility grid-backdrop {
+  background-image:
+    radial-gradient(120% 90% at 12% -10%, oklch(0.79 0.135 172 / 12%) 0%, transparent 55%),
+    radial-gradient(90% 80% at 95% 0%, oklch(0.81 0.145 80 / 8%) 0%, transparent 60%);
+}
+
+/* Outcome tones — the only place decision colours are expressed. */
+@utility tone-approve {
+  color: var(--success);
+  background-color: color-mix(in oklab, var(--success) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--success) 34%, transparent);
+}
+
+@utility tone-reject {
+  color: var(--destructive);
+  background-color: color-mix(in oklab, var(--destructive) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--destructive) 34%, transparent);
+}
+
+@utility tone-escalate {
+  color: var(--warning);
+  background-color: color-mix(in oklab, var(--warning) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--warning) 34%, transparent);
+}
+
+@utility tone-neutral {
+  color: var(--info);
+  background-color: color-mix(in oklab, var(--info) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--info) 34%, transparent);
+}
+
+@utility tone-quiet {
+  color: var(--muted-foreground);
+  background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+  border: 1px solid var(--border);
+}
+
+/* Streamed markdown from the assistant. */
+@utility prose-flow {
+  font-size: 0.875rem;
+  line-height: 1.65;
+
+  & > * + * {
+    margin-top: 0.7em;
+  }
+
+  & h1,
+  & h2,
+  & h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  & ul,
+  & ol {
+    padding-left: 1.15rem;
+    list-style: revert;
+  }
+
+  & li + li {
+    margin-top: 0.25em;
+  }
+
+  & strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  & code {
+    font-family: var(--font-mono);
+    font-size: 0.8125em;
+    background-color: color-mix(in oklab, var(--background) 70%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  & pre {
+    font-family: var(--font-mono);
+    font-size: 0.8125em;
+    background-color: color-mix(in oklab, var(--background) 70%, transparent);
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+  }
+
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+}

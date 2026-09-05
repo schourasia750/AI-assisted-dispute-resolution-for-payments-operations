@@ -1,0 +1,9 @@
+[
+  { "id": "unassigned", "name": "Unassigned", "role": "Queue", "initials": "--" },
+  { "id": "a-mira", "name": "Mira Halvorsen", "role": "Resolution lead", "initials": "MH" },
+  { "id": "a-devon", "name": "Devon Osei", "role": "Disputes analyst", "initials": "DO" },
+  { "id": "a-priya", "name": "Priya Raghavan", "role": "Fraud & risk", "initials": "PR" },
+  { "id": "a-luca", "name": "Luca Bernardi", "role": "Chargeback specialist", "initials": "LB" },
+  { "id": "a-aditi", "name": "Aditi Menon", "role": "Settlements & payouts", "initials": "AM" },
+  { "id": "a-rohan", "name": "Rohan Kulkarni", "role": "Recharge & biller ops", "initials": "RK" }
+]
